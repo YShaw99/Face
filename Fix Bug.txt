@@ -9,9 +9,8 @@
   	f2->exists("photos/user.txt");        
   	QFile f3("photos/user.txt");
   	f3->exists();        
-5.
 
-    //待改进
+    //待改进：
 1.避免重复录入人脸信息
 
     //Fun restore

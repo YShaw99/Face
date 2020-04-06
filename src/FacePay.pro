@@ -34,5 +34,5 @@ INCLUDEPATH += ../include \
 LIBS += ../lib/libopencv_*.a
 
 RESOURCES += \
-    res/res.qrc
+    ../res/res.qrc
 
