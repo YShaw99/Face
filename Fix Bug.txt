@@ -1,0 +1,23 @@
+    //遇到过的bug：
+1.若在此处直接新初始化一个register，会闪一下就结束，改为成员变量
+2.Dialog才有exec方法，如果默认继承QWidget 只有show
+3.mkdir必须是一级文件夹，不能同时创建多级文件夹
+4.exist方法一定要在普通对象中定义filename，或是用new一个指针然后再exist中传参数。例：
+	QFile *f=new QFile("photos/user.txt");
+    	f->exists();
+   	QFile *f2=new QFile();
+  	f2->exists("photos/user.txt");        
+  	QFile f3("photos/user.txt");
+  	f3->exists();        
+5.
+
+    //待改进
+1.避免重复录入人脸信息
+
+    //Fun restore
+1.创建一个文件夹
+2.拍取人脸
+3.处理图片的主要Step4
+4.读取csv文件
+
+//框架测录
