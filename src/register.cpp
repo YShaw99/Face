@@ -134,13 +134,12 @@ void Register::on_regBtn_3_clicked()
         }
     f.close();
 }
-//读取CSV处理
+//读取CSV处理,并进行模型训练
 void Register::on_regBtn_4_clicked()
 {
     std::vector<cv::Mat>imgVec;
     std::vector<int>idVec;
     readCSV("photos/user.txt",imgVec,idVec);
-
 
     if(imgVec.size()<2)
     {
@@ -148,20 +147,20 @@ void Register::on_regBtn_4_clicked()
         return;
     }
 
-    Mat testImg=imgVec[imgVec.size()-1];
+    Mat testImg=imgVec[imgVec.size()-1];//前n-1张用来训练 最后一张用来测试
     int testId=idVec[idVec.size()-1];
 
     imshow("hello",testImg);
     qDebug()<<"testID"<<testId;
-    imgVec.pop_back();
+    imgVec.pop_back();//测试用的pop 不参与训练
     idVec.pop_back();
 
     Ptr<FaceRecognizer>model=createEigenFaceRecognizer();
     model->train(imgVec,idVec);
     model->save("MyFacePCA.xml");
     int Result=model->predict(testImg);
-    qDebug()<<":::"<<Result;
 
+    qDebug()<<"预测结果为:"<<Result;
 }
 void Register::readCSV(QString csvPath,std::vector<cv::Mat>&imgVec,std::vector<int>&idVec)
 {
